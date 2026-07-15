@@ -1,14 +1,32 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
 interface ShinyButtonProps {
-  children: React.ReactNode
-  onClick?: () => void
-  className?: string
+  children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
+  color?: "blue" | "purple" | "amber" | "cyan" | "pink" | "emerald" | "white";
 }
 
-export function ShinyButton({ children, onClick, className = "" }: ShinyButtonProps) {
+const colorMap = {
+  blue: { highlight: "#3b82f6", subtle: "#93c5fd" },
+  purple: { highlight: "#a855f7", subtle: "#d8b4fe" },
+  amber: { highlight: "#f59e0b", subtle: "#fcd34d" },
+  cyan: { highlight: "#06b2d2", subtle: "#67e8f9" },
+  pink: { highlight: "#ec4899", subtle: "#f9a8d6" },
+  emerald: { highlight: "#10b981", subtle: "#6ee7b7" },
+  white: { highlight: "#ffffff", subtle: "#cccccc" },
+};
+
+export function ShinyButton({
+  children,
+  onClick,
+  className = "",
+  color = "blue",
+}: ShinyButtonProps) {
+  const theme = colorMap[color] || colorMap.blue;
+
   return (
     <>
       <style jsx>{`
@@ -42,8 +60,6 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
           --shiny-cta-bg: #000000;
           --shiny-cta-bg-subtle: #1a1818;
           --shiny-cta-fg: #ffffff;
-          --shiny-cta-highlight: blue;
-          --shiny-cta-highlight-subtle: #8484ff;
           --animation: gradient-angle linear infinite;
           --duration: 3s;
           --shadow-size: 2px;
@@ -54,9 +70,9 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
           overflow: hidden;
           cursor: pointer;
           outline-offset: 4px;
-          padding: 1.25rem 2.5rem;
+          padding: 0.85rem 1.75rem;
           font-family: "Inter", sans-serif;
-          font-size: 1.125rem;
+          font-size: 0.95rem;
           line-height: 1.2;
           font-weight: 500;
           border: 1px solid transparent;
@@ -113,7 +129,7 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
             black
           );
           border-radius: inherit;
-          opacity: 0.4;
+          opacity: 0.25;
           z-index: -1;
         }
 
@@ -129,11 +145,14 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
             transparent
           );
           mask-image: radial-gradient(circle at bottom, transparent 40%, black);
-          opacity: 0.6;
+          opacity: 0.45;
         }
 
         .shiny-cta span {
           z-index: 1;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .shiny-cta span::before {
@@ -184,7 +203,8 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
         }
 
         @keyframes breathe {
-          from, to {
+          from,
+          to {
             scale: 1;
           }
           50% {
@@ -193,9 +213,16 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
         }
       `}</style>
 
-      <button className={`shiny-cta ${className}`} onClick={onClick}>
+      <button
+        className={`shiny-cta ${className}`}
+        onClick={onClick}
+        style={{
+          "--shiny-cta-highlight": theme.highlight,
+          "--shiny-cta-highlight-subtle": theme.subtle,
+        } as React.CSSProperties}
+      >
         <span>{children}</span>
       </button>
     </>
-  )
+  );
 }

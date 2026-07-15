@@ -75,28 +75,30 @@ export function CtaSection() {
                   Let's work together to design intelligent products, secure smart contracts, or responsive web platforms. Connect with me or browse my public work.
                 </p>
 
-                <div className="flex flex-col sm:flex-row items-start gap-4">
+                <div className="flex flex-wrap items-center gap-4">
                   <ShinyButton
+                    color="blue"
                     onClick={() => window.open('https://www.linkedin.com/in/sambit-das-009248339/', '_blank')}
                   >
-                    Connect on LinkedIn
+                    LinkedIn
                   </ShinyButton>
 
-                  <LiquidButton
+                  <ShinyButton
+                    color="white"
                     onClick={() => window.open('https://github.com/sambit2804', '_blank')}
-                    className="text-foreground"
                   >
-                    Explore GitHub
-                  </LiquidButton>
+                    GitHub
+                  </ShinyButton>
 
                   <a
                     href="/Sambit_Das_Resume.pdf"
                     download="Sambit_Das_Resume.pdf"
+                    className="inline-block"
                   >
-                    <LiquidButton className="text-foreground">
-                      <Download className="w-4 h-4 mr-2" />
-                      Download Resume
-                    </LiquidButton>
+                    <ShinyButton color="purple">
+                      <Download className="w-4 h-4 mr-2 inline" />
+                      Resume
+                    </ShinyButton>
                   </a>
                 </div>
 
