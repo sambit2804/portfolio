@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+*.test.cache
+
+# Production
+build/
+dist/
+out/
+
+# Next.js
+.next/
+.vercel
+
+# Environment
+.env
+.env*.local
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+graphify/
+.kilocode.claude/
+mobile_test/
+about.md
