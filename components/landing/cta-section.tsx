@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ShinyButton } from "@/components/ui/shiny-button";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
+import { ArrowRight, Download } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -74,45 +76,27 @@ export function CtaSection() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-start gap-4">
-                  <a
-                    href="https://www.linkedin.com/in/sambit-das-009248339/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center bg-foreground hover:bg-foreground/90 text-background px-8 h-14 text-base rounded-full group font-medium"
+                  <ShinyButton
+                    onClick={() => window.open('https://www.linkedin.com/in/sambit-das-009248339/', '_blank')}
                   >
                     Connect on LinkedIn
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                  </a>
-                  <a
-                    href="https://github.com/sambit2804"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center h-14 px-8 text-base rounded-full border border-foreground/20 hover:bg-foreground/5 font-medium"
+                  </ShinyButton>
+
+                  <LiquidButton
+                    onClick={() => window.open('https://github.com/sambit2804', '_blank')}
+                    className="text-foreground"
                   >
                     Explore GitHub
-                  </a>
+                  </LiquidButton>
+
                   <a
                     href="/Sambit_Das_Resume.pdf"
                     download="Sambit_Das_Resume.pdf"
-                    className="inline-flex items-center justify-center h-14 px-8 text-base rounded-full border border-foreground/20 hover:bg-foreground/5 font-medium"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="mr-2"
-                    >
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                      <polyline points="7 10 12 15 17 10" />
-                      <line x1="12" y1="15" x2="12" y2="3" />
-                    </svg>
-                    Download Resume
+                    <LiquidButton className="text-foreground">
+                      <Download className="w-4 h-4 mr-2" />
+                      Download Resume
+                    </LiquidButton>
                   </a>
                 </div>
 
